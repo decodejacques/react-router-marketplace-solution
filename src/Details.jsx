@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { reviews } from './Data.js'
+import { Link } from 'react-router-dom'
 class Details extends Component {
     render = () => {
         let specificReviews = reviews.filter(review => {
             return review.itemId === this.props.item.id
         })
         let reviewReactElements = specificReviews.map(review => {
-            return (<div>{review.content}</div>)
+            return (<div>
+                {review.content}
+                <Link to={"/reviewer/" + review.reviewerId}>reviewer</Link>
+            </div>)
         })
         return (<div>
             <h3>Description</h3>

@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import { Route, BrowserRouter } from 'react-router-dom'
 import Seller from './Seller.jsx'
 import Item from './Item.jsx'
-import { initialItems, initialSellers } from './Data.js'
+import { initialItems, initialSellers, reviewers } from './Data.js'
 import Details from './Details.jsx'
+import Reviewer from './Reviewer.jsx'
 let renderAllItems = () => {
   return <div>
     {initialItems.map(item =>
@@ -30,6 +31,16 @@ let renderDetails = routerData => {
   })
   return (<Details item={candidates[0]} />)
 }
+
+let renderReviewer = routerData => {
+  let idNeeded = routerData.match.params.reviewerId
+  let candidates = reviewers.filter(reviewer => {
+    return reviewer.id === idNeeded
+  })
+  return (<Reviewer reviewer={candidates[0]} />)
+}
+
+
 class App extends Component {
   render() {
     return (
@@ -38,6 +49,7 @@ class App extends Component {
           <Route exact={true} path='/' render={renderAllItems} />
           <Route exact={true} path='/seller/:sid' render={renderSeller} />
           <Route exact={true} path='/details/:itemId' render={renderDetails} />
+          <Route exact={true} path='/reviewer/:reviewerId' render={renderReviewer} />
         </div>
       </BrowserRouter>
     );
