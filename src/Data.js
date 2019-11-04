@@ -17,6 +17,9 @@ let initialItems = [{
 let reviews = [{
     content: "great boat",
     itemId: "asewq"
+}, {
+    content: "Love this boat",
+    itemId: "asewq"
 }]
 
 let initialSellers = [{
@@ -28,4 +31,4 @@ let initialSellers = [{
     name: "Hank Green",
     rating: "2 stars",
 }]
-export { initialItems, initialSellers } 
+export { initialItems, initialSellers, reviews } 
