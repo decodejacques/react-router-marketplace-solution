@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import { reviews } from './Data.js'
 import { Link } from 'react-router-dom'
 class Details extends Component {
+    addToCart = () => {
+        this.props.parent.setState({
+            cart: this.props.parent.state.cart.concat(this.props.item.id)
+        })
+    }
     render = () => {
         let specificReviews = reviews.filter(review => {
             return review.itemId === this.props.item.id
@@ -21,6 +26,9 @@ class Details extends Component {
             {this.props.item.stock}
             <h5>Reviews</h5>
             {reviewReactElements}
+            <button onClick={this.addToCart}>Add to cart</button>
+
+
         </div>)
     }
 }
